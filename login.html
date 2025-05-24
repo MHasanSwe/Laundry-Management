@@ -1,0 +1,63 @@
+<?php
+    include("connection.php");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Laundry Management System</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-section">
+      <h2>🧺 Smart Laundry Management System</h2>
+      <p class="welcome-text">Welcome back! Please login to your account.</p>
+
+      <form action="login.php" onsubmit="return isvalid()" method="POST">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="example@mail.com" required />
+        <small class="error-message"></small>
+
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" name="password" placeholder="*********************" required />
+        </div>
+        <small class="error-message"></small>
+
+        <div class="form-options">
+          <label><input type="checkbox" name="remember"/> Remember Me</label>
+          <a href="forgot-password.html">Forgot Password?</a>
+        </div>
+
+        <button type="submit">Log in</button>
+
+        <div class="social-login">
+          <span>Or login with</span>
+          <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Google</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="right-section">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#">About us</a>
+        <a href="#">Blog</a>
+      </nav>
+      <img src="/images/delivery-guy.png" alt="Delivery Illustration" class="illustration" />
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <p>&copy; 2025 Smart Laundry Management System. All rights reserved.</p>
+  </footer>
+</body>
+</html>

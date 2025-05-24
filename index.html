@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Laundry Management System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth; /* ⭐ smooth scroll */
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      font-size: 16px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #039855;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 60px 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      max-width: 500px;
+    }
+
+    .hero-content h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-content p {
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .hero-content button {
+      padding: 12px 28px;
+      background-color: #039855;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .hero img {
+      max-width: 300px;
+      border-radius: 8px;
+    }
+
+    .features-section {
+      background: url('/images/feature-bg.jpg') center/cover no-repeat;
+      background-blend-mode: darken;
+      background-color: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 60px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .feature {
+      width: 400px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .feature-icon {
+      font-size: 40px;
+    }
+
+    .feature-text h3 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .feature-text p {
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .contact-section {
+      padding: 60px 40px;
+      background-color: #f9f9f9;
+      color: #333;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .contact-section p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .feature {
+        width: 100%;
+      }
+    }
+
+    footer {
+      background-color: #f8f8f8;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧺 Smart Laundry Management System</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="/login.html">Login</a>
+      <a href="#">About us</a>
+      <a href="#">Pricing</a>
+      <a href="#">Blog</a>
+      <a href="#contact">Contact Us</a> <!-- ⭐ Contact link -->
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="/images/left_img.png" alt="Laundry delivery" />
+    <div class="hero-content">
+      <h2>Smart Laundry Made Simple</h2>
+      <p>Effortlessly manage pickups, deliveries, and billing from one smart platform.</p>
+      <a href="/register.html"><button>Get Started</button></a>
+    </div>
+    <img src="/images/img2.png" alt="Laundry pickup" />
+  </section>
+
+  <section class="features-section">
+    <div class="feature"><div class="feature-icon">🧬</div><div class="feature-text"><h3>Lost Clothes? Wrong Deliveries?</h3><p>Track each piece of clothing all through the work process, guarantee the requests preparation or time, no wrong conveyances.</p></div></div>
+    <div class="feature"><div class="feature-icon">🤝</div><div class="feature-text"><h3>Grow Your Business</h3><p>Maintain your systematic an expert and change yourself from vendor to a representative.</p></div></div>
+    <div class="feature"><div class="feature-icon">😊</div><div class="feature-text"><h3>Enhance Customer Experience</h3><p>Be applicable to the changing way of life of clients with Emails and SMS correspondence.</p></div></div>
+    <div class="feature"><div class="feature-icon">🖥️</div><div class="feature-text"><h3>Blend of Dry Cleaning and Technology</h3><p>It gave us the guide on which the Laundry Management Software programming has been produced.</p></div></div>
+    <div class="feature"><div class="feature-icon">📈</div><div class="feature-text"><h3>Reduce Waste and Increase Profits</h3><p>Data is currently on your fingertips to control your business, enhance effectiveness, lessen costs.</p></div></div>
+    <div class="feature"><div class="feature-icon">💡</div><div class="feature-text"><h3>Not a Techie!! Not a problem!!</h3><p>You remain focussed on your center business and customers while we deal with the innovation needs.</p></div></div>
+  </section>
+
+  <!-- ⭐ Contact Us Section -->
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <p>Email: support@smartlaundry.com</p>
+    <p>Phone: +880 1234 567 890</p>
+    <p>Address: 123, Dhaka City, Bangladesh</p>
+  </section>
+
+  <footer class="main-footer">
+    <p>&copy; 2025 Smart Laundry Management System. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

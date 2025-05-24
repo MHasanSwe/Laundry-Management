@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - Smart Laundry Management System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-section">
+      <h2>Create an Account</h2>
+      <p class="welcome-text">Sign up to manage your laundry orders.</p>
+
+      <form action="register.php" method="POST">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" required />
+        <div class="error-message">Full name is required.</div>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+        <div class="error-message">Email is required.</div>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+        <div class="error-message">Password is required.</div>
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required />
+        <div class="error-message">Passwords do not match.</div>
+
+        <div class="form-options">
+          <label>
+            <input type="checkbox" id="agree" name="agree" required />
+            I agree to the terms & conditions
+          </label>
+        </div>
+        <div class="error-message">You must agree to continue.</div>
+
+        <button type="submit">Register</button>
+        <div style="text-align: center; margin-bottom: 20px;">
+  <a href="login.html" class="secondary-button">Already have an account? Log in</a>
+</div>
+
+
+        <div class="social-login">
+          <span>Or sign up with</span>
+          <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Google</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="right-section">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#">About us</a>
+        <a href="#">Blog</a>
+      </nav>
+      <img src="/images/delivery-guy.png" alt="Delivery Illustration" class="illustration" />
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <p>&copy; 2025 Smart Laundry Management System. All rights reserved.</p>
+  </footer>
+</body>
+</html>
