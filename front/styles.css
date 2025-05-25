@@ -141,10 +141,26 @@ button {
   text-align: center;
 }
 
-.social-links a {
+/* .social-links {
+  margin-top: 10px;
+  margin-inline-end: 10px;
   margin: 0 10px;
   color: #1a73e8;
   font-weight: bold;
+  text-decoration: none;
+} */
+
+.social-links  {
+  margin: 0px 10px;
+  color: #4879b8;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 23px;
+  
+}
+.social-links a{
+  text-emphasis: none;
+  margin-inline-end: 15px;
   text-decoration: none;
 }
 

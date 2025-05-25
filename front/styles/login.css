@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #fff;
+}
+
+/* ✅ Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+}
+
+header h1 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+header nav {
+  display: flex;
+  gap: 25px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+header nav a:hover {
+  color: #039855;
+}
+
+/* ✅ Layout */
+.container {
+  display: flex;
+  height: calc(100vh - 120px); /* header + footer reserved space */
+}
+
+.left-section {
+  flex: 1;
+  padding: 60px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* centers form horizontally */
+}
+
+.left-section h2 {
+  font-weight: 500;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.welcome-text {
+  color: gray;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ✅ Compact Form Box */
+.left-section form {
+  width: 100%;
+  max-width: 400px;
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+form input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #d9d9d9;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+/* ✅ Right Section */
+.right-section {
+  flex: 1;
+  background-color: #e3e3e3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.illustration {
+  max-width: 80%;
+  height: auto;
+}
+
+/* ✅ Footer */
+.main-footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  border-top: 1px solid #ddd;
+}

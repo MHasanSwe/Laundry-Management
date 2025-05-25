@@ -1,43 +1,45 @@
 <?php
-require 'connection.php'; // DB connection file
+require 'connection.php'; // DB connection
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $fullName = trim($_POST['fullName']);
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmPassword'];
-    $agree = isset($_POST['agree']);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $full_name = $_POST["fullName"] ?? '';
+    $email = $_POST["email"] ?? '';
+    $password = $_POST["password"] ?? '';
+    $confirm_password = $_POST["confirmPassword"] ?? '';
+    $role = isset($_POST["role"]) ? (int)$_POST["role"] : 0;
 
-    // Validate fields
-    if (empty($fullName) || empty($email) || empty($password) || !$agree) {
-        die("Please fill in all required fields and agree to the terms.");
+    // Password mismatch
+    if ($password !== $confirm_password) {
+        header("Location: ../front/register.html?error=password_mismatch");
+        exit;
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("Invalid email format.");
-    }
+    // Sanitize
+    $full_name = htmlspecialchars($full_name, ENT_QUOTES);
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    if ($password !== $confirmPassword) {
-        die("Passwords do not match.");
-    }
-
-    // Hash the password
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    // Insert into database
     try {
-        $stmt = $conn->prepare("INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)");
-        $stmt->execute([$fullName, $email, $hashedPassword]);
-        echo "Registration successful. <a href='login.html'>Click here to log in</a>";
+        $stmt = $conn->prepare("INSERT INTO users (full_name, email, password, role) VALUES (:full_name, :email, :password, :role)");
+        $stmt->bindParam(":full_name", $full_name);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":password", $hashed_password);
+        $stmt->bindParam(":role", $role);
+        $stmt->execute();
+
+        // Registration successful → go to login page with success flag
+        header("Location: ../front/login.html?success=registered");
+        exit;
+
     } catch (PDOException $e) {
         if ($e->getCode() == 23000) {
-            // Duplicate email
-            echo "An account with this email already exists.";
+            header("Location: ../front/register.html?error=email_exists");
         } else {
-            echo "Registration failed: " . $e->getMessage();
+            echo "Error: " . $e->getMessage();
         }
+        exit;
     }
 } else {
-    echo "Invalid request.";
+    echo "Invalid request method.";
 }
 ?>

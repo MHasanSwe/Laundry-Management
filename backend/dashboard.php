@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,30 +37,13 @@
       text-decoration: none;
       color: #333;
     }
-    /* .logout-btn {
+    .logout-btn {
       background: #00a86b;
       color: #fff;
       padding: 0.5rem 1rem;
       border: none;
       border-radius: 5px;
-    } */
-
-    .logout-btn {
-  background-color: white;
-  color: #4a90e2;
-  border: 2px solid #4a90e2;
-  padding: 6px 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.logout-btn:hover {
-  background-color: #e74c3c;
-  color: white;
-  border-color: #e74c3c;
-}
+    }
     .container {
       display: flex;
     }
@@ -160,7 +151,7 @@
       <a href="#">Reports</a>
       <a href="#">Settings</a>
       <input type="text" placeholder="Search" style="padding: 0.3rem 0.5rem; margin-left: 1rem;">
-      <a href="../backend/logout.php"><button class="logout-btn">Logout</button></a>
+      <button class="logout-btn">Logout</button>
     </nav>
   </header>
 
