@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile | Laundry Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/editprofile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1><i class="fas fa-user-edit"></i> Edit Profile</h1>
+        </div>
+        
+        <div class="profile-box">
+            <form id="profile-form">
+                <div class="form-section">
+                    <h2><i class="fas fa-id-card"></i> Personal Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" value="Sarah" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" value="Johnson" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" value="(555) 123-4567" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" value="1990-03-15" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2><i class="fas fa-envelope"></i> Contact Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" value="sarah.j@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="altEmail">Alternate Email</label>
+                            <input type="email" id="altEmail" value="sarah.personal@example.com">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="address">Present Address</label>
+                            <textarea id="address" rows="3" required>123 Main St, Apt 4B, Brooklyn, NY 11201</textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="address">Permanent Address</label>
+                            <textarea id="address" rows="3" required>123 Main St, Apt 4B, Brooklyn, NY 11201</textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2><i class="fas fa-info-circle"></i> Additional Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="education">Education</label>
+                            <input type="text" id="education" value="MBA, New York University">
+                        </div>
+                        <div class="form-group">
+                            <label for="occupation">Occupation</label>
+                            <input type="text" id="occupation" value="Marketing Director">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn cancel-btn">Cancel</button>
+                    <button type="submit" class="btn save-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Profile updated successfully!');
+            // In a real app, you would send data to server here
+        });
+        
+        document.querySelector('.cancel-btn').addEventListener('click', function() {
+            if(confirm('Discard all changes?')) {
+                window.location.href = 'profile.html'; // Would redirect in real app
+            }
+        });
+    </script>
+</body>
+</html>
