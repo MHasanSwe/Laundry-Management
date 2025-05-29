@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="styles/payment.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="illustration"></div>
+      <h1>Payment</h1>
+    </header>
+
+    <main class="payment-box">
+      <section class="order-summary">
+        <h2>Order Summary</h2>
+        <div class="item">
+          <span>Wash</span>
+          <span>$120</span>
+        </div>
+        <div class="item">
+          <span>Dry Cleaning</span>
+          <span>$150</span>
+        </div>
+        <div class="item">
+          <span>Ironing</span>
+          <span>$40</span>
+        </div>
+        <div class="item">
+          <span>Delivery Charge</span>
+          <span>$40</span>
+        </div>
+        <div class="item total">
+          <strong>Total</strong>
+          <strong>$310 BDT</strong>
+        </div>
+      </section>
+
+      <section class="payment-method">
+        <h2>Payment Method</h2>
+        <div class="method">
+          <label><input type="radio" name="payment" /> Visa Card <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" /></label>
+          <label><input type="radio" name="payment" checked /> Credit card <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="MasterCard" /></label>
+          <label><input type="radio" name="payment" /> Bkash <img src="https://download.logo.wine/logo/BKash/BKash-Icon2-Logo.wine.png" alt="Bkash" /></label>
+        </div>
+
+        <div class="coupon">
+          <h3>Coupon Code</h3>
+          <input type="text" placeholder="Enter Coupon Code" />
+          <button>Apply</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <button class="pay-button">PAY NOW  $310</button>
+    </footer>
+  </div>
+</body>
+</html>
