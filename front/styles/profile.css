@@ -1,0 +1,123 @@
+:root {
+    --primary: #8540cf;
+    --secondary: #f8f9fa;
+    --text: #333;
+    --light-gray: #e9ecef;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.profile-container {
+    max-width: 900px;
+    margin: 30px auto;
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    margin: 10px 0 5px;
+}
+
+.profile-email {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.profile-menu {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.profile-menu a {
+    display: block;
+    color: white;
+    padding: 10px 0;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.profile-menu a:hover {
+    background: rgba(255,255,255,0.1);
+    padding-left: 10px;
+    border-radius: 4px;
+}
+
+.profile-menu a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.profile-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.profile-title {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin: 0;
+}
+
+.edit-btn {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.profile-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+.profile-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.detail-item {
+    margin-bottom: 15px;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    padding: 8px 
+}
