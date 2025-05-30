@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Place Order - Smart Laundry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      font-size: 16px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #039855;
+    }
+
+    body {
+      background: url('https://images.unsplash.com/photo-1581579185169-53e13c7e7b08') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dashboard-container {
+      display: flex;
+      flex: 1;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #2c3e50;
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      color: white;
+    }
+
+    .sidebar a {
+      padding: 15px 30px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #34495e;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      background-color: rgba(255,255,255,0.95);
+    }
+
+    .main-content h1 {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-section {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .form-row label {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .form-row input, .form-row select, .form-row textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .order-table {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .order-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .order-row select, .order-row input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .add-btn, .proceed-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .add-btn:hover, .proceed-button:hover {
+      background-color: #2980b9;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+      }
+
+      .sidebar a {
+        flex: 1;
+        justify-content: center;
+      }
+
+      .order-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    .proceed-button-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.proceed-button {
+  background-color: #2980b9; 
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+    footer {
+      background-color: #f8f8f8;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+  <script>
+    function updateTotal(el) {
+      const row = el.closest('.order-row');
+      const quantity = parseFloat(row.querySelector('.quantity').value);
+      const unitPrice = 5.00; // Example flat rate
+      row.querySelector('.unit-price').value = unitPrice.toFixed(2);
+      row.querySelector('.total-price').value = (unitPrice * quantity).toFixed(2);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>🧺 Smart Laundry Management System</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Pricing</a>
+      <a href="#">Blog</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+  </header>
+
+  <div class="dashboard-container">
+    <div class="sidebar">
+      <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+      <a href="place_order.html"><i class="fas fa-shopping-cart"></i> Place Order</a>
+      <a href="order_history.html"><i class="fas fa-history"></i> Order History</a>
+      <a href="status.html"><i class="fas fa-sync-alt"></i> Laundry Status</a>
+      <a href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
+      <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+    </div>
+
+    <div class="main-content">
+      <h1>Place an Order</h1>
+      <section class="form-section">
+        <div class="form-row">
+          <label>Customer Name *</label>
+          <input type="text" />
+        </div>
+        <div class="form-row">
+          <label>Address *</label>
+          <input type="text" />
+        </div>
+
+        <h3>Order Details *</h3>
+        <div class="order-table">
+          <div class="order-row">
+            <label>Product</label>
+            <label>Service</label>
+            <label>Quantity</label>
+            <label>Price</label>
+            <label>Total</label>
+          </div>
+          <div class="order-row">
+            <select>
+              <option>Shirt</option>
+              <option>Pant</option>
+              <option>T-Shirt</option>
+            </select>
+            <select>
+              <option>Dry-Wash</option>
+              <option>Normal-Wash</option>
+              <option>Iron</option>
+              <option>Iron & Wash</option>
+            </select>
+            <input type="number" class="quantity" value="0" min="0" onchange="updateTotal(this)" />
+            <input type="text" class="unit-price" value="0.00" readonly />
+            <input type="text" class="total-price" value="0.00" readonly />
+          </div>
+        </div>
+        <button class="add-btn" style="margin-top: 5px; margin-bottom: 30px;">+ Add New</button>
+        <h3 style="margin-top: 30px;">Pickup & Delivery</h3>
+        <!-- <button class="add-btn">+ Add New</button>
+
+        <h3>Pickup & Delivery</h3> -->
+        <div class="form-row" style="margin-top: 30px;">
+          <label>Pickup Type *</label>
+          <select>
+            <option>Door Pickup</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Delivery Type *</label>
+          <select>
+            <option>Door Delivery</option>
+          </select>
+        </div>
+        <div class="proceed-button-container">
+                <button type="button" class="proceed-button">Proceed to Payment</button>
+          </div>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Smart Laundry Management System. All rights reserved.</p>
+  </footer>
+</body>
+</html>
