@@ -6,7 +6,28 @@
     --border: #ddd;
     --danger: #e74c3c;
 }
+header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
 
+    header h1 {
+      font-size: 16px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #039855;
+    }
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f5f7fa;
@@ -162,3 +183,9 @@ select {
         justify-content: center;
     }
 }
+footer {
+      background-color: #f8f8f8;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
