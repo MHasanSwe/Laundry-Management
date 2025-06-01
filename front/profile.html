@@ -1,82 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile | Laundry Management System</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles/profile.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile | Laundry Management System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles/profile.css"/>
 </head>
 <body>
-    <div class="profile-container">
-        <div class="profile-content">
-            <div class="profile-header">
-                <h1 class="profile-title">My Profile</h1>
-                <button class="edit-btn"><i class="fas fa-edit"></i> Edit Profile</button>
-            </div>
-            
-            <div class="profile-section">
-                <h3 class="section-title">Personal Information</h3>
-                <div class="profile-details">
-                    <div class="detail-item">
-                        <div class="detail-label">First Name</div>
-                        <div class="detail-value">Sarah</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Last Name</div>
-                        <div class="detail-value">Johnson</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Phone Number</div>
-                        <div class="detail-value">(555) 123-4567</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Date of Birth</div>
-                        <div class="detail-value">15 March 1990</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="profile-section">
-                <h3 class="section-title">Contact Information</h3>
-                <div class="profile-details">
-                    <div class="detail-item">
-                        <div class="detail-label">Email Address</div>
-                        <div class="detail-value">sarah.j@example.com</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Alternate Email</div>
-                        <div class="detail-value">sarah.personal@example.com</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Present Address</div>
-                        <div class="detail-value">123 Main St, Apt 4B, Brooklyn, NY 11201</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Permanent Address</div>
-                        <div class="detail-value">123 Main St, Apt 4B, Brooklyn, NY 11201</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="profile-section">
-                <h3 class="section-title">Additional Information</h3>
-                <div class="profile-details">
-                    <div class="detail-item">
-                        <div class="detail-label">Education</div>
-                        <div class="detail-value">MBA, New York University</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Occupation</div>
-                        <div class="detail-value">Marketing Director</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Member Since</div>
-                        <div class="detail-value">15 January 2022</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <header>
+    <h1>🧺 Smart Laundry Management System</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="./front/login.html">Login</a>
+      <a href="#">Pricing</a>
+      <a href="#">Blog</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+  </header>
+
+  <div class="dashboard-container">
+    <div class="sidebar">
+      <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+      <a href="place_order.html"><i class="fas fa-shopping-cart"></i> Place Order</a>
+      <a href="order_history.html"><i class="fas fa-history"></i> Order History</a>
+      <a href="status.html"><i class="fas fa-sync-alt"></i> Laundry Status</a>
+      <a href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
+      <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
     </div>
+
+    <div class="profile-container">
+      <div class="profile-content">
+        <div class="profile-header">
+          <h1 class="profile-title" >My Profile</h1>
+          <button class="edit-btn"><i class="fas fa-edit"></i> Edit Profile</button>
+        </div>
+
+        <div class="profile-section">
+          <h3 class="section-title">Personal Information</h3>
+          <div class="profile-details">
+            <div class="detail-item">
+              <div class="detail-label">First Name</div>
+              <div class="detail-value">Sarah</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Last Name</div>
+              <div class="detail-value">Johnson</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Phone Number</div>
+              <div class="detail-value">(555) 123-4567</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Date of Birth</div>
+              <div class="detail-value">15 March 1990</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3 class="section-title">Contact Information</h3>
+          <div class="profile-details">
+            <div class="detail-item">
+              <div class="detail-label">Email Address</div>
+              <div class="detail-value">sarah.j@example.com</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Alternate Email</div>
+              <div class="detail-value">sarah.personal@example.com</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Present Address</div>
+              <div class="detail-value">123 Main St, Apt 4B, Brooklyn, NY 11201</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Permanent Address</div>
+              <div class="detail-value">123 Main St, Apt 4B, Brooklyn, NY 11201</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3 class="section-title">Additional Information</h3>
+          <div class="profile-details">
+            <div class="detail-item">
+              <div class="detail-label">Education</div>
+              <div class="detail-value">MBA, New York University</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Occupation</div>
+              <div class="detail-value">Marketing Director</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Member Since</div>
+              <div class="detail-value">15 January 2022</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <p>&copy; 2025 Smart Laundry Management System. All rights reserved.</p>
+  </footer>
 </body>
 </html>
