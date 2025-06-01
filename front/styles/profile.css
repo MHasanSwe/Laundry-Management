@@ -18,28 +18,40 @@ body {
 
 header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     padding: 20px;
     border-bottom: 1px solid #ddd;
     width: 100%;
     background-color: #f8f9fa;
+    box-sizing: border-box;
 }
 
 header h1 {
     font-size: 16px;
+    flex: 1 1 auto;
+    min-width: 250px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    min-width: 300px;
+    box-sizing: border-box;
 }
 
 nav a {
-    margin-left: 20px;
     text-decoration: none;
     color: #000;
     font-weight: 500;
+    white-space: nowrap;
 }
 
-nav a:hover {
-    color: #039855;
-}
 
 .dashboard-container {
     display: flex;
