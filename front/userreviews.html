@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reviews - Smart Laundry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+      background-color: #fff;
+    }
+
+    header h1 {
+      font-size: 16px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #039855;
+    }
+
+    .dashboard-container {
+      display: flex;
+      flex: 1;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #2c3e50;
+      padding-top: 30px;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .sidebar a {
+      padding: 15px 30px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #34495e;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      background-color: #ffffff;
+    }
+
+    .main-content h1 {
+      margin-bottom: 20px;
+      color: #8540cf;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .review-header h1 {
+      font-size: 24px;
+    }
+
+    .sort-select select {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+    /* === Add Review Form Styles === */
+.add-review-box {
+  background-color: #fefefe;
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.add-review-box h2 {
+  color: #8540cf;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.submit-btn {
+  background: #4a90e2;
+    color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.submit-btn:hover {
+  background-color: #4a90e2;
+}
+
+
+/* === Star Rating Specific Styles === */
+.star-rating {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.star-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stars {
+  display: flex;
+  font-size: 24px;
+  color: #ffc107;
+}
+
+.stars i {
+  margin-right: 2px;
+}
+
+#rating-value {
+  font-size: 16px;
+  font-weight: bold;
+  color: #444;
+}
+
+
+    .review-box {
+      background-color: #fefefe;
+      border: 1px solid #e0e0e0;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .review-box .name {
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .review-box .course {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .review-box .rating {
+      color: #f1c40f;
+      font-weight: 600;
+    }
+
+    .review-box .review-text {
+      margin-top: 8px;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .review-box .date {
+      font-size: 13px;
+      color: #888;
+      margin-top: 6px;
+    }
+
+    footer {
+      background-color: #f8f8f8;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+      }
+
+      .sidebar a {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<script>
+  function updateStars(value) {
+    const starsContainer = document.getElementById("stars");
+    const ratingValue = document.getElementById("rating-value");
+
+    starsContainer.innerHTML = "";
+
+    const fullStars = Math.floor(value);
+    const hasHalfStar = value % 1 !== 0;
+
+    for (let i = 0; i < 5; i++) {
+      if (i < fullStars) {
+        starsContainer.innerHTML += '<i class="fa-solid fa-star"></i>';
+      } else if (i === fullStars && hasHalfStar) {
+        starsContainer.innerHTML += '<i class="fa-solid fa-star-half-stroke"></i>';
+      } else {
+        starsContainer.innerHTML += '<i class="fa-regular fa-star"></i>';
+      }
+    }
+
+    ratingValue.textContent = parseFloat(value).toFixed(1);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Set today's date in the date input
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
+    });
+    document.getElementById("date").value = formattedDate;
+
+    // Initialize stars
+    updateStars(document.getElementById("rating").value);
+  });
+
+  document.getElementById("reviewForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // In a real app, you'd store the data or send to server
+    alert("Review submitted!");
+
+    this.reset();
+
+    // Reset stars to default (5)
+    document.getElementById("rating").value = 5;
+    updateStars(5);
+
+    // Reset date to today again
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
+    });
+    document.getElementById("date").value = formattedDate;
+  });
+</script>
+
+<body>
+  <header>
+    <h1>🧺 Smart Laundry Management System</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Pricing</a>
+      <a href="#">Blog</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+  </header>
+
+  <div class="dashboard-container">
+    <div class="sidebar">
+       <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+        <a href="place_order.html"><i class="fas fa-shopping-cart"></i> Place Order</a>
+        <a href="order_history.html"><i class="fas fa-history"></i> Order History</a>
+        <a href="status.html"><i class="fa-solid fa-comments"></i> Reviews</a>
+        <a href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
+        <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+    </div>
+
+    <div class="main-content">
+      <div class="review-header">
+        <h1><i class="fa-solid fa-comments" style="margin-right: 10px;"></i>Reviews</h1>
+        <div class="sort-select">
+  <label for="month-select" style="margin-right: 5px;">Month:</label>
+  <select id="month-select">
+    <option value="all">All</option>
+    <option value="01">January</option>
+    <option value="02">February</option>
+    <option value="03">March</option>
+    <option value="04">April</option>
+    <option value="05">May</option>
+    <option value="06">June</option>
+    <option value="07">July</option>
+    <option value="08">August</option>
+    <option value="09">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+  </select>
+
+  <label for="year-select" style="margin: 0 5px 0 15px;">Year:</label>
+  <select id="year-select">
+    <option value="all">All</option>
+    <option value="2025">2025</option>
+    <option value="2024">2024</option>
+    <option value="2023">2023</option>
+  </select>
+</div>
+
+      </div>
+      <div class="add-review-box" >
+  <h2>Add New Review</h2>
+  <form id="reviewForm">
+    <div class="form-group">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="service">Service:</label><br>
+      <select id="service" name="service" required style="width: 100%; padding: 8px; margin: 5px 0 15px; border: 1px solid #ccc; border-radius: 6px;">
+        <option value="">--Select--</option>
+        <option value="Dry Wash">Dry Wash</option>
+        <option value="Wash">Wash</option>
+        <option value="Iron">Iron</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating:</label>
+      <div class="star-rating">
+        <input type="range" id="rating" name="rating" min="0.5" max="5" step="0.5" value="5" oninput="updateStars(this.value)">
+        <div class="star-display">
+          <div class="stars" id="stars"></div>
+          <span id="rating-value">5.0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-top: 15px;">
+      <label for="review">Review:</label><br>
+      <textarea id="review" name="review" rows="4" required style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 6px;"></textarea>
+    </div>
+
+    <div class="form-group" style="margin-top: 15px;">
+      <label for="date">Date:</label><br>
+      <input type="text" id="date" name="date" readonly style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 6px;">
+    </div>
+
+    <button type="submit" class="submit-btn"><i class="fa-solid fa-plus"></i> Add Review </button>
+  </form>
+</div>
+
+      <div class="review-box">
+        <div class="name">Aarav Patel</div>
+        <div class="course">Service: Dry Wash</div>
+        <div class="rating">⭐ 5.0</div>
+        <div class="review-text">Clothes were handled with care and returned fresh and crisp. Excellent!</div>
+        <div class="date">10 May, 2025</div>
+      </div>
+
+      <div class="review-box">
+        <div class="name">Meera Shah</div>
+        <div class="course">Service: Wash</div>
+        <div class="rating">⭐ 4.0</div>
+        <div class="review-text">Good washing service. Could be faster, but quality is great.</div>
+        <div class="date">9 May, 2025</div>
+      </div>
+
+      <div class="review-box">
+        <div class="name">Rohan Verma</div>
+        <div class="course">Service: Iron</div>
+        <div class="rating">⭐ 4.5</div>
+        <div class="review-text">Nicely ironed shirts. They looked professional and sharp.</div>
+        <div class="date">8 May, 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Smart Laundry Management System. All rights reserved.</p>
+  </footer>
+</body>
+</html>
