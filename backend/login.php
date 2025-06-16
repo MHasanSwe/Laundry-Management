@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: ../front/dashboard.html");
             } else {
                 // You can create a separate user dashboard if needed
-                header("Location: ../front/user_home.html");
+                header("Location: ../front/userdashboard.html");
             }
             exit;
         } else {
