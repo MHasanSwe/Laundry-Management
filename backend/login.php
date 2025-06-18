@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect to dashboard if admin
             if ($user['role'] == 1) {
-                header("Location: ../front/dashboard.html");
+                header("Location: ../front/admindashboard.html");
             } else {
                 // You can create a separate user dashboard if needed
                 header("Location: ../front/userdashboard.html");
