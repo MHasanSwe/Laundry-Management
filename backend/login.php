@@ -20,12 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_role'] = $user['role']; // 1 = admin, 0 = normal
 
             // Redirect to dashboard if admin
-            if ($user['role'] == 1) {
-                header("Location: ../front/admindashboard.html");
-            } else {
-                // You can create a separate user dashboard if needed
-                header("Location: ../front/userdashboard.html");
-            }
+           if ($user['role'] == 1) {
+    $_SESSION['admin_logged_in'] = true;
+    header("Location: ../backend/admindashboard.php");
+} else {
+    header("Location: ../front/userdashboard.html");
+}
+
             exit;
         } else {
             // Invalid credentials

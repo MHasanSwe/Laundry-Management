@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['admin_logged_in'])) {
+  header("Location: ../front/login.html");
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -233,8 +241,9 @@
       <a href="order_history.html"><i class="fas fa-history"></i> Order History</a>
       <a href="status.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
       <a href="status.html"><i class="fa-solid fa-comments"></i> Reviews</a>
-      <a href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
-      <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <a href="settingsadmin.html"><i class="fas fa-cogs"></i> Settings</a>
+      <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+
     </aside>
 
     <!-- =================== MAIN CONTENT =================== -->
