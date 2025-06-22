@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile | Laundry Management</title>
+    <title>User Edit Profile | Laundry Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles/editprofile.css">
 </head>
 <header>
     <h1>🧺 Smart Laundry Management System</h1>
     <nav>
-      <a href="#">Home</a>
       <a href="#">Pricing</a>
       <a href="#">Blog</a>
       <a href="#contact">Contact Us</a> <!-- ⭐ Contact link -->
@@ -29,19 +28,19 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" value="Sarah" required>
+                            <input type="text" id="firstName" placeholder="firstName">
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" value="Johnson" required>
+                            <input type="text" id="lastName" placeholder="lastName" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" value="(555) 123-4567" required>
+                            <input type="tel" id="phone" placeholder="Number" required>
                         </div>
                         <div class="form-group">
                             <label for="dob">Date of Birth</label>
-                            <input type="date" id="dob" value="1990-03-15" required>
+                            <input type="date" id="dob" placeholder="Date" required>
                         </div>
                     </div>
                 </div>
@@ -51,19 +50,15 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" value="sarah.j@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="altEmail">Alternate Email</label>
-                            <input type="email" id="altEmail" value="sarah.personal@example.com">
+                            <input type="email" id="email" placeholder="Email" required>
                         </div>
                         <div class="form-group full-width">
                             <label for="address">Present Address</label>
-                            <textarea id="address" rows="3" required>123 Main St, Apt 4B, Brooklyn, NY 11201</textarea>
+                            <textarea id="address" rows="3" required></textarea>
                         </div>
                         <div class="form-group full-width">
                             <label for="address">Permanent Address</label>
-                            <textarea id="address" rows="3" required>123 Main St, Apt 4B, Brooklyn, NY 11201</textarea>
+                            <textarea id="address" rows="3" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -73,11 +68,11 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="education">Education</label>
-                            <input type="text" id="education" value="MBA, New York University">
+                            <input type="text" id="education" placeholder="Education">
                         </div>
                         <div class="form-group">
                             <label for="occupation">Occupation</label>
-                            <input type="text" id="occupation" value="Marketing Director">
+                            <input type="text" id="occupation" placeholder="Occupation">
                         </div>
                     </div>
                 </div>
