@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>In Progress - Smart Laundry</title>
+  <title>Admin In Progress - Smart Laundry</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -215,13 +215,13 @@
 }
 
 .status-btn.complete {
-  color: green;
-  border-color: green;
-  background-color: #e8f5e9;
+  color: #00897b;
+  border-color: #00897b;
+  background-color: #e0f2f1;
 }
 
 .status-btn.complete:hover {
-  background-color: #c8e6c9;
+  background-color: #b2dfdb;
 }
 
 
@@ -232,21 +232,12 @@
   padding: 5px 12px;
 }
 
-.cash.on.delivery {
-  color: white;
-  background-color: #f44336;
-  border-radius: 12px;
-  padding: 5px 12px;
-  margin-right: 8px;
-}
-
   </style>
 </head>
 <body>
   <header>
     <h1>🧺 Smart Laundry Management System</h1>
     <nav>
-      <a href="#">Home</a>
       <a href="#">Pricing</a>
       <a href="#">Blog</a>
       <a href="#contact">Contact Us</a> <!-- ⭐ Contact link -->
@@ -254,13 +245,13 @@
   </header>
   <div class="dashboard-container">
     <div class="sidebar">
-      <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-      <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
-      <a href="place_order.html"><i class="fa-solid fa-users"></i> Users List</a>
-      <a href="order_history.html"><i class="fas fa-history"></i> Order History</a>
-      <a href="status.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
-      <a href="status.html"><i class="fa-solid fa-comments"></i> Reviews</a>
-      <a href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
+      <a href="admindashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a href="adminprofile.html"><i class="fas fa-user"></i> Profile</a>
+      <a href="userlist (1).html"><i class="fa-solid fa-users"></i> Users List</a>
+      <a href="orderhistory.html"><i class="fas fa-history"></i> Order History</a>
+      <a href="#"><i class="fa-solid fa-cash-register"></i> Payment History</a>
+      <a href="adminreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
+      <a href="settingsadmin.html"><i class="fas fa-cogs"></i> Settings</a>
       <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
     </div>
 
@@ -270,6 +261,7 @@
         <thead>
           <tr>
             <th>Order ID</th>
+            <th>Customer Name</th>
             <th>Date</th>
             <th>Items</th>
             <th>Total</th>
@@ -279,10 +271,11 @@
         </thead>
         <tbody>
           <tr>
-            <td>#1001</td>
-            <td>2025-05-15</td>
-            <td>5 Shirts, 2 Pants</td>
-            <td>12.00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td><span class="payment paid">Paid</span></td>
             <td>
               <div class="status-buttons">
@@ -291,11 +284,12 @@
             </td>
           </tr>
           <tr>
-            <td>#1002</td>
-            <td>2025-05-20</td>
-            <td>3 Jackets</td>
-            <td>15.00</td>
-            <td><span class="cash on delivery">Cash On Delivery</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="payment paid">Paid</span></td>
             <td>
               <div class="status-buttons">
                 <button class="status-btn complete">Complete</button>
@@ -303,10 +297,11 @@
             </td>
           </tr>
           <tr>
-            <td>#1003</td>
-            <td>2025-05-25</td>
-            <td>10 T-Shirts</td>
-            <td>20.00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td><span class="payment paid">Paid</span></td>
             <td>
               <div class="status-buttons">
