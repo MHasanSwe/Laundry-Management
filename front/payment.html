@@ -11,8 +11,6 @@
   <header>
     <h1>🧺 Smart Laundry Management System</h1>
     <nav>
-      <a href="userdashboard.html">Home</a>
-      <a href="./front/login.html">Login</a>
       <a href="#">Pricing</a>
       <a href="#">Blog</a>
       <a href="#contact">Contact Us</a>
@@ -31,7 +29,7 @@
         <div id="order-summary-items"></div>
         <div class="item total">
           <strong>Total</strong>
-          <strong id="total-amount">$0 BDT</strong>
+          <strong id="total-amount"></strong>
         </div>
       </section>
 
@@ -53,6 +51,7 @@
 
     <footer>
       <button class="pay-button" onclick="finalizePayment()">PAY NOW</button>
+      <button class="cancel-button" onclick="window.location.href='placeorder.html'">CANCEL</button>
     </footer>
   </div>
 
