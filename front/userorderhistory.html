@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Order History - Smart Laundry</title>
+  <title>User Order History - Smart Laundry</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -230,7 +230,6 @@
   <header>
     <h1>🧺 Smart Laundry Management System</h1>
     <nav>
-      <a href="#">Home</a>
       <a href="#">Pricing</a>
       <a href="#">Blog</a>
       <a href="#contact">Contact Us</a> <!-- ⭐ Contact link -->
@@ -239,12 +238,12 @@
   <div class="dashboard-container">
     <div class="sidebar">
       <a href="userdashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-      <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
-      <a href="place_order.html"><i class="fas fa-shopping-cart"></i> Place Order</a>
-      <a href="order_history.html"><i class="fas fa-history"></i> Order History</a>
-      <a href="status.html"><i class="fa-solid fa-comments"></i> Reviews</a>
-      <a href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
-      <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+    <a href="placeorder.html"><i class="fas fa-shopping-cart"></i> Place Order</a>
+    <a href="userorderhistory.html"><i class="fas fa-history"></i> Order History</a>
+    <a href="userreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
+    <a href="Usersettings.html"><i class="fas fa-cogs"></i> Settings</a>
+    <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
     </div>
 
     <div class="main-content">
@@ -253,6 +252,7 @@
         <thead>
           <tr>
             <th>Order ID</th>
+            <th>Name</th>
             <th>Date</th>
             <th>Status</th>
             <th>Items</th>
@@ -262,32 +262,30 @@
         </thead>
         <tbody>
           <tr>
-            <td>#1001</td>
-            <td>2025-05-15</td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td><span class="status complete">Complete</span></td>
-            <td>5 Shirts, 2 Pants</td>
-            <td>12.00</td>
+            <td></td>
+            <td></td>
             <td><span class="payment paid">Paid</span></td>
           </tr>
           <tr>
-            <td>#1002</td>
-            <td>2025-05-20</td>
-            <td><span class="status in-progress">In Progress</span></td>
-            <td>3 Jackets</td>
-            <td>15.00</td>
-            <td>
-              <span class="payment due">Due</span>
-              <button class="pay-button" onclick="payBill(this)" title="Pay Now">
-                <i class="fas fa-credit-card"></i>
-              </button>
-            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="status complete">Complete</span></td>
+            <td></td>
+            <td></td>
+            <td><span class="payment paid">Paid</span></td>
           </tr>
           <tr>
-            <td>#1003</td>
-            <td>2025-05-25</td>
-            <td><span class="status pending">Pending</span></td>
-            <td>10 T-Shirts</td>
-            <td>20.00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="status complete">Complete</span></td>
+            <td></td>
+            <td></td>
             <td><span class="payment paid">Paid</span></td>
           </tr>
         </tbody>
