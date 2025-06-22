@@ -225,7 +225,6 @@ if (!isset($_SESSION['admin_logged_in'])) {
   <header>
     <h1>🧺 Smart Laundry Management System</h1>
     <nav>
-      <a href="#">Home</a>
       <a href="#">Pricing</a>
       <a href="#">Blog</a>
       <a href="#contact">Contact Us</a>
@@ -256,27 +255,27 @@ if (!isset($_SESSION['admin_logged_in'])) {
         <div class="stat-card blue">
           <h2 class="stat-number" id="newOrders">240</h2>
           <p class="stat-label">New Orders</p>
-          <a href="#" class="view-more">View more »</a>
+          <a href="adminorders.html" class="view-more">View more »</a>
         </div>
         <div class="stat-card green">
           <h2 class="stat-number" id="inProgress">120</h2>
           <p class="stat-label">In Progress</p>
-          <a href="#" class="view-more">View more »</a>
+          <a href="adminprogress.html" class="view-more">View more »</a>
         </div>
         <div class="stat-card orange">
           <h2 class="stat-number" id="completedOrders">560</h2>
           <p class="stat-label">Complete</p>
-          <a href="#" class="view-more">View more »</a>
+          <a href="admincompleted.html" class="view-more">View more »</a>
         </div>
         <div class="stat-card red">
           <h2 class="stat-number" id="totalCustomers">1026</h2>
           <p class="stat-label">Users</p>
-          <a href="#" class="view-more">View more »</a>
+          <a href="userlist (1).html" class="view-more">View more »</a>
         </div>
         <div class="stat-card orange">
             <h2 class="stat-number" id="completedOrders">200</h2>
             <p class="stat-label">Reviews</p>
-            <a href="#" class="view-more">View more »</a>
+            <a href="adminreviews.html" class="view-more">View more »</a>
         </div>
         <div class="stat-card purple">
             <p class="stat-label larger-label">Add Income</p>
