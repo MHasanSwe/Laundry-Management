@@ -14,5 +14,6 @@
             "database": "smart_laundry",
             "password": ""
         }
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
