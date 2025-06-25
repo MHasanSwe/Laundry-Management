@@ -12,18 +12,20 @@ CREATE TABLE sign_up (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-SELECT * FROM sign_up;
-
--- User Profile Table
 CREATE TABLE user_profile (
     user_id INT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     phone_number VARCHAR(15) NOT NULL,
-    address TEXT NOT NULL,
+    date_of_birth DATE,
+    address TEXT NOT NULL,       
+    permanent_address TEXT,
+    education VARCHAR(100),
+    occupation VARCHAR(100),
     profile_picture VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES sign_up(user_id) ON DELETE CASCADE
 );
+
 
 -- Laundry Owner Table (if needed for admin management)
 CREATE TABLE owner (

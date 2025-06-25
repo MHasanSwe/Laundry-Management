@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>User Profile | Laundry Management System</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
   <link rel="stylesheet" href="styles/profile.css"/>
 </head>
 <body>
@@ -17,25 +17,24 @@
     </nav>
   </header>
 
-  <div class="dashboard-container">
-    <div class="sidebar">
+  <main class="dashboard-container">
+    <aside class="sidebar">
       <a href="userdashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
-    <a href="placeorder.html"><i class="fas fa-shopping-cart"></i> Place Order</a>
-    <a href="userorderhistory.html"><i class="fas fa-history"></i> Order History</a>
-    <a href="userreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
-    <a href="Usersettings.html"><i class="fas fa-cogs"></i> Settings</a>
-    <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-    </div>
+      <a href="profile.html" class="active"><i class="fas fa-user"></i> Profile</a>
+      <a href="placeorder.html"><i class="fas fa-shopping-cart"></i> Place Order</a>
+      <a href="userorderhistory.html"><i class="fas fa-history"></i> Order History</a>
+      <a href="userreviews.html"><i class="fas fa-comments"></i> Reviews</a>
+      <a href="Usersettings.html"><i class="fas fa-cogs"></i> Settings</a>
+      <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+    </aside>
 
-    <div class="profile-container">
+    <section class="profile-container">
       <div class="profile-content">
         <div class="profile-header">
           <h1 class="profile-title"><i class="fas fa-user" style="margin-right: 10px;"></i>My Profile</h1>
-        <a href="editprofile.html">
-  <button class="edit-btn"><i class="fas fa-edit"></i> Edit Profile</button>
-  </a>
-
+          <a href="editprofile.html">
+            <button class="edit-btn"><i class="fas fa-edit"></i> Edit Profile</button>
+          </a>
         </div>
 
         <div class="profile-section">
@@ -43,19 +42,19 @@
           <div class="profile-details">
             <div class="detail-item">
               <div class="detail-label">First Name</div>
-              <div class="detail-value"></div>
+              <div class="detail-value">John</div>
             </div>
             <div class="detail-item">
               <div class="detail-label">Last Name</div>
-              <div class="detail-value"></div>
+              <div class="detail-value">Doe</div>
             </div>
             <div class="detail-item">
               <div class="detail-label">Phone Number</div>
-              <div class="detail-value"></div>
+              <div class="detail-value">+880123456789</div>
             </div>
             <div class="detail-item">
               <div class="detail-label">Date of Birth</div>
-              <div class="detail-value"></div>
+              <div class="detail-value">1990-01-01</div>
             </div>
           </div>
         </div>
@@ -65,15 +64,15 @@
           <div class="profile-details">
             <div class="detail-item">
               <div class="detail-label">Email Address</div>
-              <div class="detail-value"></div>
+              <div class="detail-value">john.doe@example.com</div>
             </div>
             <div class="detail-item">
               <div class="detail-label">Present Address</div>
-              <div class="detail-value"></div>
+              <div class="detail-value">Dhaka, Bangladesh</div>
             </div>
             <div class="detail-item">
               <div class="detail-label">Permanent Address</div>
-              <div class="detail-value"></div>
+              <div class="detail-value">Chittagong, Bangladesh</div>
             </div>
           </div>
         </div>
@@ -83,11 +82,11 @@
           <div class="profile-details">
             <div class="detail-item">
               <div class="detail-label">Education</div>
-              <div class="detail-value"></div>
+              <div class="detail-value">B.Sc in Computer Science</div>
             </div>
             <div class="detail-item">
               <div class="detail-label">Occupation</div>
-              <div class="detail-value"></div>
+              <div class="detail-value">Software Developer</div>
             </div>
             <div class="detail-item">
               <div class="detail-label">Member Since</div>
@@ -96,8 +95,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <footer class="main-footer">
     <p>&copy; 2025 Smart Laundry Management System. All rights reserved.</p>
