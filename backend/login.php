@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Redirect based on role
         if ($user["role"] === "admin") {
-            header("Location: ../front/admindashboard.html");
+            header("Location: ../front/adminDashboard.html");
         } else {
             header("Location: ../front/userdashboard.html");
         }
