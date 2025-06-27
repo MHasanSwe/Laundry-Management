@@ -1,13 +1,16 @@
+
 <?php
 session_start();
-if (!isset($_SESSION['admin_logged_in'])) {
-  header("Location: ../front/login.html");
-  exit();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../front/login.html");
+    exit();
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,12 +21,13 @@ if (!isset($_SESSION['admin_logged_in'])) {
     * {
       box-sizing: border-box;
     }
+
     .main-heading h1 {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  color: #8540cf;
-}
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #8540cf;
+    }
 
 
     body {
@@ -159,16 +163,34 @@ if (!isset($_SESSION['admin_logged_in'])) {
     }
 
     /* Color variations */
-    .blue    { background: #3B82F6; }
-    .green   { background: #16A34A; }
-    .orange  { background: #F59E0B; }
-    .red     { background: #DC2626; }
-    .purple { background: #8540cf; }
-    .pink   { background: #ec4899; }
+    .blue {
+      background: #3B82F6;
+    }
+
+    .green {
+      background: #16A34A;
+    }
+
+    .orange {
+      background: #F59E0B;
+    }
+
+    .red {
+      background: #DC2626;
+    }
+
+    .purple {
+      background: #8540cf;
+    }
+
+    .pink {
+      background: #ec4899;
+    }
+
     .larger-label {
-        font-size: 20px;
-        text-align: center;
-        width:100%;
+      font-size: 20px;
+      text-align: center;
+      width: 100%;
     }
 
     /* --------------------------------------------------*
@@ -214,12 +236,14 @@ if (!isset($_SESSION['admin_logged_in'])) {
       .sidebar {
         display: none;
       }
+
       .main-content {
         padding: 24px;
       }
     }
   </style>
 </head>
+
 <body>
   <!-- =================== HEADER =================== -->
   <header>
@@ -235,7 +259,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
     <!-- =================== SIDEBAR =================== -->
     <aside class="sidebar">
       <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-      <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+      <a href="../backend/adminprofile.php"><i class="fas fa-user"></i> Profile</a>
       <a href="place_order.html"><i class="fa-solid fa-users"></i> Users List</a>
       <a href="order_history.html"><i class="fas fa-history"></i> Order History</a>
       <a href="status.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
@@ -247,9 +271,9 @@ if (!isset($_SESSION['admin_logged_in'])) {
 
     <!-- =================== MAIN CONTENT =================== -->
     <main class="main-content">
-        <div class="main-heading">
-            <h1><i class="fas fa-tachometer-alt" style="margin-right: 10px;"></i>Dashboard</h1>
-          </div>
+      <div class="main-heading">
+        <h1><i class="fas fa-tachometer-alt" style="margin-right: 10px;"></i>Dashboard</h1>
+      </div>
       <!-- Top statistics row -->
       <section class="stats">
         <div class="stat-card blue">
@@ -273,17 +297,17 @@ if (!isset($_SESSION['admin_logged_in'])) {
           <a href="userlist (1).html" class="view-more">View more »</a>
         </div>
         <div class="stat-card orange">
-            <h2 class="stat-number" id="completedOrders">200</h2>
-            <p class="stat-label">Reviews</p>
-            <a href="adminreviews.html" class="view-more">View more »</a>
+          <h2 class="stat-number" id="completedOrders">200</h2>
+          <p class="stat-label">Reviews</p>
+          <a href="adminreviews.html" class="view-more">View more »</a>
         </div>
         <div class="stat-card purple">
-            <p class="stat-label larger-label">Add Income</p>
-            <a href="#" class="view-more">View more »</a>
+          <p class="stat-label larger-label">Add Income</p>
+          <a href="#" class="view-more">View more »</a>
         </div>
         <div class="stat-card pink">
-            <p class="stat-label larger-label">Add Expenditure</p>
-            <a href="#" class="view-more">View more »</a>
+          <p class="stat-label larger-label">Add Expenditure</p>
+          <a href="#" class="view-more">View more »</a>
         </div>
       </section>
 
@@ -296,7 +320,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
             <canvas id="ordersThisMonthChart"></canvas>
           </div>
         </div>
-      
+
         <!-- Income This Year -->
         <div class="chart-card">
           <h3>Income This Year</h3>
@@ -304,7 +328,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
             <canvas id="incomeThisYearChart"></canvas>
           </div>
         </div>
-      
+
         <!-- Expenditure This Month -->
         <div class="chart-card">
           <h3>Expenditure This Month</h3>
@@ -312,7 +336,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
             <canvas id="expenditureThisMonthChart"></canvas>
           </div>
         </div>
-      
+
         <!-- Profit This Year -->
         <div class="chart-card">
           <h3>Profit This Year</h3>
@@ -320,7 +344,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
             <canvas id="profitThisYearChart"></canvas>
           </div>
         </div>
-      </section>      
+      </section>
     </main>
   </div>
 
@@ -332,7 +356,11 @@ if (!isset($_SESSION['admin_logged_in'])) {
   <!-- =================== CHART.JS CONFIG =================== -->
   <script>
     // Helper to create a simple chart
-    const createChart = (ctx, type, data, options = {}) => new Chart(ctx, { type, data, options });
+    const createChart = (ctx, type, data, options = {}) => new Chart(ctx, {
+      type,
+      data,
+      options
+    });
 
     // 1. Orders This Month (Pie)
     createChart(document.getElementById('ordersMonthChart'), 'pie', {
@@ -342,7 +370,11 @@ if (!isset($_SESSION['admin_logged_in'])) {
         backgroundColor: ['#3B82F6', '#F59E0B', '#16A34A'],
       }]
     }, {
-      plugins: { legend: { position: 'bottom' } }
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
     });
 
     // 2. Orders This Year (Doughnut)
@@ -354,7 +386,11 @@ if (!isset($_SESSION['admin_logged_in'])) {
       }]
     }, {
       cutout: '60%',
-      plugins: { legend: { position: 'bottom' } }
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
     });
 
     // 3. Month's Package Income (Bar)
@@ -366,9 +402,15 @@ if (!isset($_SESSION['admin_logged_in'])) {
         backgroundColor: '#3B82F6',
       }]
     }, {
-      plugins: { legend: { display: false } },
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
       scales: {
-        y: { beginAtZero: true }
+        y: {
+          beginAtZero: true
+        }
       }
     });
 
@@ -381,11 +423,18 @@ if (!isset($_SESSION['admin_logged_in'])) {
         backgroundColor: '#F59E0B',
       }]
     }, {
-      plugins: { legend: { display: false } },
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
       scales: {
-        y: { beginAtZero: true }
+        y: {
+          beginAtZero: true
+        }
       }
     });
   </script>
 </body>
+
 </html>

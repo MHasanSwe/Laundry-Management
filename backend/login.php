@@ -15,12 +15,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate user and password
     if ($user && password_verify($password, $user["password"])) {
         $_SESSION["user_id"] = $user["user_id"];
+        // $user["user_id"];
         $_SESSION["email"] = $user["email"];
         $_SESSION["role"] = $user["role"];
 
         // Redirect based on role
         if ($user["role"] === "admin") {
-            header("Location: ../front/adminDashboard.html");
+          header("Location: ../front/adminDashboard.php");
         } else {
             header("Location: ../front/userdashboard.html");
         }
@@ -30,4 +31,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 }
-?>
