@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Optional: Restrict access to admins only
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../front/login.html");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
