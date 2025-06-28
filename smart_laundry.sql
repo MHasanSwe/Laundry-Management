@@ -75,3 +75,80 @@ CREATE TABLE service_progress (
 );
 
 
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `smart_laundry`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `service` varchar(100) DEFAULT NULL,
+  `rating` decimal(2,1) DEFAULT NULL,
+  `review_text` text DEFAULT NULL,
+  `review_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `user_id`, `name`, `service`, `rating`, `review_text`, `review_date`) VALUES
+(1, 1, 'Test User', 'Dry Wash', 4.5, 'Great service!', '2025-06-27'),
+(2, 21, 'Nusrat', 'Dry Wash', 4.0, 'Well done !', '2025-06-27'),
+(3, 21, 'Nusrat', 'Dry Wash', 4.0, 'Well done !', '2025-06-27'),
+(4, 21, 'Nusrat', 'Dry Wash', 5.0, 'Good !', '2025-06-27'),
+(5, 23, 'Wali', 'Wash', 3.5, 'WELL SERVICE!', '2025-06-27');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `sign_up` (`user_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
