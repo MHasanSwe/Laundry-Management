@@ -261,7 +261,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
       <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
       <a href="../backend/adminprofile.php"><i class="fas fa-user"></i> Profile</a>
       <a href="place_order.html"><i class="fa-solid fa-users"></i> Users List</a>
-      <a href="order_history.html"><i class="fas fa-history"></i> Order History</a>
+      <a href="../backend/adminorderhistory.php"><i class="fas fa-history"></i> Order History</a>
       <a href="status.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
       <a href="../front/adminreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
       <a href="settingsadmin.html"><i class="fas fa-cogs"></i> Settings</a>
@@ -355,86 +355,60 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
   <!-- =================== CHART.JS CONFIG =================== -->
   <script>
-    // Helper to create a simple chart
-    const createChart = (ctx, type, data, options = {}) => new Chart(ctx, {
-      type,
-      data,
-      options
-    });
+  // Labels for the X axis (Months)
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    // 1. Orders This Month (Pie)
-    createChart(document.getElementById('ordersMonthChart'), 'pie', {
-      labels: ['Dry Cleaning', 'Ironing', 'Wash'],
-      datasets: [{
-        data: [120, 60, 80],
-        backgroundColor: ['#3B82F6', '#F59E0B', '#16A34A'],
-      }]
-    }, {
-      plugins: {
-        legend: {
-          position: 'bottom'
-        }
-      }
-    });
+  // Dummy data for each chart
+  const ordersData = [30, 45, 60, 70, 55, 40, 65, 80, 90, 100, 95, 85];
+  const incomeData = [5000, 7000, 8000, 9000, 7500, 6000, 8500, 10000, 11000, 12000, 11500, 10500];
+  const expenditureData = [2000, 2500, 3000, 3200, 2800, 2400, 3100, 4000, 4200, 4500, 4300, 3900];
+  const profitData = incomeData.map((income, index) => income - expenditureData[index]);
 
-    // 2. Orders This Year (Doughnut)
-    createChart(document.getElementById('ordersYearChart'), 'doughnut', {
-      labels: ['Dry Cleaning', 'Ironing', 'Wash'],
-      datasets: [{
-        data: [720, 480, 640],
-        backgroundColor: ['#EF4444', '#F59E0B', '#10B981'],
-      }]
-    }, {
-      cutout: '60%',
-      plugins: {
-        legend: {
-          position: 'bottom'
-        }
-      }
-    });
-
-    // 3. Month's Package Income (Bar)
-    createChart(document.getElementById('packageIncomeChart'), 'bar', {
-      labels: ['Dry Cleaning', 'Ironing', 'Wash'],
-      datasets: [{
-        label: 'Income ($)',
-        data: [4000, 1500, 5200],
-        backgroundColor: '#3B82F6',
-      }]
-    }, {
-      plugins: {
-        legend: {
-          display: false
-        }
+  // Helper to create a chart
+  function createLineChart(ctxId, label, data, borderColor) {
+    new Chart(document.getElementById(ctxId), {
+      type: 'line',
+      data: {
+        labels: months,
+        datasets: [{
+          label: label,
+          data: data,
+          borderColor: borderColor,
+          backgroundColor: 'rgba(0, 0, 0, 0)',
+          tension: 0.3
+        }]
       },
-      scales: {
-        y: {
-          beginAtZero: true
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true
+          }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Month'
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: label
+            }
+          }
         }
       }
     });
+  }
 
-    // 4. Month's Ordinary Income (Bar)
-    createChart(document.getElementById('ordinaryIncomeChart'), 'bar', {
-      labels: ['Dry Cleaning', 'Ironing', 'Wash'],
-      datasets: [{
-        label: 'Income ($)',
-        data: [3200, 2700, 4500],
-        backgroundColor: '#F59E0B',
-      }]
-    }, {
-      plugins: {
-        legend: {
-          display: false
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    });
-  </script>
+  // Create each chart
+  createLineChart('ordersThisMonthChart', 'Orders', ordersData, '#36A2EB');
+  createLineChart('incomeThisYearChart', 'Income', incomeData, '#4CAF50');
+  createLineChart('expenditureThisMonthChart', 'Expenditure', expenditureData, '#F44336');
+  createLineChart('profitThisYearChart', 'Profit', profitData, '#FF9800');
+</script>
 </body>
 
 </html>
