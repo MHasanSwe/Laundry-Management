@@ -263,7 +263,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
       <a href="place_order.html"><i class="fa-solid fa-users"></i> Users List</a>
       <a href="order_history.html"><i class="fas fa-history"></i> Order History</a>
       <a href="status.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
-      <a href="status.html"><i class="fa-solid fa-comments"></i> Reviews</a>
+      <a href="../front/adminreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
       <a href="settingsadmin.html"><i class="fas fa-cogs"></i> Settings</a>
       <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
 
