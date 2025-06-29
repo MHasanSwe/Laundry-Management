@@ -42,7 +42,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
  <a href="profile.php"><i class="fas fa-user"></i> Profile</a>
  <a href="../front/placeorder.html"><i class="fas fa-shopping-cart"></i> Place Order</a>
  <a href="../front/userorderhistory.html"><i class="fas fa-history"></i> Order History</a>
- <a href="../backend/userreviews.php"><i class="fa-solid fa-comments"></i> Reviews</a>
+ <a href="../front/userreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
  <a href="../front/Usersettings.html"><i class="fas fa-cogs"></i> Settings</a>
  <a href="../front/logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
  </div>

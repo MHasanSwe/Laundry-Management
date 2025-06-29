@@ -419,45 +419,35 @@ footer {
 
       // Handle form submission
       document.getElementById("reviewForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+        e.preventDefault();
 
-  const formData = new FormData(this);
-  fetch("../backend/submit_review.php", {
-    method: "POST",
-    body: formData
-  })
-  .then(res => res.text())
-  .then(data => {
-    if (data.includes("success")) {
-      alert("Review added!");
-      location.reload();
-    } else if (data.includes("unauthorized")) {
-      alert("You must be logged in to submit a review.");
-    } else {
-      alert("Error submitting review: " + data);
-    }
-  });
-});
+        const name = document.getElementById("name").value.trim();
+        const service = document.getElementById("service").value;
+        const rating = parseFloat(document.getElementById("rating").value);
+        const reviewText = document.getElementById("review").value.trim();
+        const rawDate = new Date();
+        const formatted = formatDate(rawDate);
+        const rawDateStr = rawDate.toISOString().split('T')[0];
 
-      
-      // Fetch user-specific reviews
-fetch("../backend/get_user_reviews.php")
-  .then(res => res.json())
-  .then(reviews => {
-    reviews.forEach(r => {
-      const reviewHTML = `
-        <div class="review-box">
-          <div class="name">${r.name}</div>
-          <div class="course">${r.service}</div>
-          <div class="rating">${'★'.repeat(Math.floor(r.rating))}${(r.rating % 1 ? '½' : '')}</div>
-          <div class="review-text">${r.review_text}</div>
-          <div class="date" data-raw="${r.review_date}">${new Date(r.review_date).toLocaleDateString()}</div>
-        </div>
-      `;
-      document.getElementById("reviewsContainer").insertAdjacentHTML('beforeend', reviewHTML);
-    });
-  });
+        const reviewHTML = `
+          <div class="review-box">
+            <div class="name">${name}</div>
+            <div class="course">${service}</div>
+            <div class="rating">${'★'.repeat(Math.floor(rating)) + (rating % 1 ? '½' : '')}</div>
+            <div class="review-text">${reviewText}</div>
+            <div class="date" data-raw="${rawDateStr}">${formatted}</div>
+          </div>
+        `;
 
+        document.getElementById("reviewsContainer").insertAdjacentHTML('afterbegin', reviewHTML);
+
+        alert("Review submitted!");
+
+        this.reset();
+        document.getElementById("rating").value = 5;
+        updateStars(5);
+        document.getElementById("date").value = formatted;
+      });
     });
   </script>
 </body>
