@@ -55,6 +55,10 @@ CREATE TABLE orders (
     FOREIGN KEY (user_id) REFERENCES sign_up(user_id) ON DELETE CASCADE
 );
 
+
+ALTER TABLE orders ADD status ENUM('Pending', 'In Progress', 'Completed', 'Cancelled') DEFAULT 'Pending';
+
+
 -- Billing Table
 CREATE TABLE bill (
     order_id INT PRIMARY KEY,
@@ -97,13 +101,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `reviews` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `service` varchar(100) DEFAULT NULL,
-  `rating` decimal(2,1) DEFAULT NULL,
-  `review_text` text DEFAULT NULL,
-  `review_date` date DEFAULT NULL
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `name` VARCHAR(100) DEFAULT NULL,
+  `service` VARCHAR(100) DEFAULT NULL,
+  `rating` DECIMAL(2,1) DEFAULT NULL,
+  `review_text` TEXT DEFAULT NULL,
+  `review_date` DATE DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  FOREIGN KEY (`user_id`) REFERENCES `sign_up` (`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -116,6 +123,10 @@ INSERT INTO `reviews` (`id`, `user_id`, `name`, `service`, `rating`, `review_tex
 (3, 21, 'Nusrat', 'Dry Wash', 4.0, 'Well done !', '2025-06-27'),
 (4, 21, 'Nusrat', 'Dry Wash', 5.0, 'Good !', '2025-06-27'),
 (5, 23, 'Wali', 'Wash', 3.5, 'WELL SERVICE!', '2025-06-27');
+
+
+INSERT INTO reviews (user_id, name, service, rating, review_text, review_date)
+VALUES (1, 'Test User', 'Dry Wash', 4.5, 'Great service!', '2025-06-27');
 
 --
 -- Indexes for dumped tables
