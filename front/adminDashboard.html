@@ -220,8 +220,8 @@
     <h1>🧺 Smart Laundry Management System</h1>
     <nav>
       <a href="#">Pricing</a>
-      <a href="#">Blog</a>
-      <a href="#contact">Contact Us</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact Us</a>
     </nav>
   </header>
 
@@ -273,7 +273,7 @@
         </div>
         <div class="stat-card purple">
             <p class="stat-label larger-label">Add Income</p>
-            <a href="#" class="view-more">View more »</a>
+            <a href="addincome.html" class="view-more">View more »</a>
         </div>
         <div class="stat-card pink">
             <p class="stat-label larger-label">Add Expenditure</p>
@@ -325,61 +325,59 @@
 
   <!-- =================== CHART.JS CONFIG =================== -->
   <script>
-    // Helper to create a simple chart
-    const createChart = (ctx, type, data, options = {}) => new Chart(ctx, { type, data, options });
+  // Labels for the X axis (Months)
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    // 1. Orders This Month (Pie)
-    createChart(document.getElementById('ordersMonthChart'), 'pie', {
-      labels: ['Dry Cleaning', 'Ironing', 'Wash'],
-      datasets: [{
-        data: [120, 60, 80],
-        backgroundColor: ['#3B82F6', '#F59E0B', '#16A34A'],
-      }]
-    }, {
-      plugins: { legend: { position: 'bottom' } }
-    });
+  // Dummy data for each chart
+  const ordersData = [30, 45, 60, 70, 55, 40, 65, 80, 90, 100, 95, 85];
+  const incomeData = [5000, 7000, 8000, 9000, 7500, 6000, 8500, 10000, 11000, 12000, 11500, 10500];
+  const expenditureData = [2000, 2500, 3000, 3200, 2800, 2400, 3100, 4000, 4200, 4500, 4300, 3900];
+  const profitData = incomeData.map((income, index) => income - expenditureData[index]);
 
-    // 2. Orders This Year (Doughnut)
-    createChart(document.getElementById('ordersYearChart'), 'doughnut', {
-      labels: ['Dry Cleaning', 'Ironing', 'Wash'],
-      datasets: [{
-        data: [720, 480, 640],
-        backgroundColor: ['#EF4444', '#F59E0B', '#10B981'],
-      }]
-    }, {
-      cutout: '60%',
-      plugins: { legend: { position: 'bottom' } }
-    });
-
-    // 3. Month's Package Income (Bar)
-    createChart(document.getElementById('packageIncomeChart'), 'bar', {
-      labels: ['Dry Cleaning', 'Ironing', 'Wash'],
-      datasets: [{
-        label: 'Income ($)',
-        data: [4000, 1500, 5200],
-        backgroundColor: '#3B82F6',
-      }]
-    }, {
-      plugins: { legend: { display: false } },
-      scales: {
-        y: { beginAtZero: true }
+  // Helper to create a chart
+  function createLineChart(ctxId, label, data, borderColor) {
+    new Chart(document.getElementById(ctxId), {
+      type: 'line',
+      data: {
+        labels: months,
+        datasets: [{
+          label: label,
+          data: data,
+          borderColor: borderColor,
+          backgroundColor: 'rgba(0, 0, 0, 0)',
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true
+          }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Month'
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: label
+            }
+          }
+        }
       }
     });
+  }
 
-    // 4. Month's Ordinary Income (Bar)
-    createChart(document.getElementById('ordinaryIncomeChart'), 'bar', {
-      labels: ['Dry Cleaning', 'Ironing', 'Wash'],
-      datasets: [{
-        label: 'Income ($)',
-        data: [3200, 2700, 4500],
-        backgroundColor: '#F59E0B',
-      }]
-    }, {
-      plugins: { legend: { display: false } },
-      scales: {
-        y: { beginAtZero: true }
-      }
-    });
-  </script>
+  // Create each chart
+  createLineChart('ordersThisMonthChart', 'Orders', ordersData, '#36A2EB');
+  createLineChart('incomeThisYearChart', 'Income', incomeData, '#4CAF50');
+  createLineChart('expenditureThisMonthChart', 'Expenditure', expenditureData, '#F44336');
+  createLineChart('profitThisYearChart', 'Profit', profitData, '#FF9800');
+</script>
 </body>
 </html>
