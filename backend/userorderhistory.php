@@ -1,4 +1,3 @@
-
 <?php
 
 include("auth.php");
@@ -30,195 +29,265 @@ try {
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Order History - Smart Laundry</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Order History - Smart Laundry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { margin: 0; display: flex; flex-direction: column; height: 100vh; background-color: #f5f7fa; }
-    header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #ddd; }
-    header h1 { font-size: 16px; }
-    header nav a { margin-left: 20px; text-decoration: none; color: #2c3e50; font-weight: 500; }
-    nav a:hover { color: #039855; }
-    .dashboard-container { display: flex; flex: 1; overflow: hidden; }
-    .sidebar { width: 220px; background-color: #2c3e50; padding-top: 30px; display: flex; flex-direction: column; color: white; }
-    .sidebar a { padding: 15px 30px; color: inherit; text-decoration: none; font-size: 15px; display: flex; align-items: center; gap: 10px; transition: background 0.3s; }
-    .sidebar a:hover, .sidebar a.active { background-color: #34495e; }
-    .main-content { flex: 1; padding: 40px 56px; overflow-y: auto; background: #fff; display: flex; flex-direction: column; }
-    .main-heading h1 { font-size: 28px; font-weight: bold; margin-bottom: 20px; color: #8540cf; display: flex; align-items: center; gap: 10px; }
-    .search-container { margin-bottom: 20px; max-width: 400px; }
-    .search-container input { width: 100%; padding: 10px 15px; border-radius: 8px; border: 1.5px solid #ccc; font-size: 16px; transition: border-color 0.3s ease; }
-    .search-container input:focus { outline: none; border-color: #486481; box-shadow: 0 0 8px #486481; }
-    table { width: 100%; border-collapse: collapse; box-shadow: 0 2px 15px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; background: white; }
-    thead { background-color: #2c3e50; color: white; user-select: none; }
-    thead th { padding: 16px 20px; text-align: left; font-weight: 600; font-size: 16px; cursor: pointer; position: relative; transition: background-color 0.3s ease; }
-    thead th:hover { background-color: #6b2fb5; }
-    thead th .sort-arrow { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 12px; opacity: 0.5; transition: opacity 0.3s; }
-    thead th.sort-asc .sort-arrow { opacity: 1; transform: translateY(-50%) rotate(180deg); }
-    thead th.sort-desc .sort-arrow { opacity: 1; }
-    tbody tr { border-bottom: 1px solid #e0e0e0; transition: background-color 0.3s ease; }
-    tbody tr:hover { background-color: #f9f0ff; }
-    tbody td { padding: 14px 20px; font-size: 14px; color: #555; }
-    .status { padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 13px; text-align: center; width: max-content; }
-    .status.completed { background-color: #27ae60; color: white; }
-    .status.pending { background-color: #f39c12; color: white; }
-    .status.cancelled { background-color: #e74c3c; color: white; }
-    .pagination { margin-top: 25px; display: flex; justify-content: flex-end; gap: 10px; user-select: none; }
-    .pagination button { background-color: #8540cf; border: none; color: white; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px; transition: background-color 0.3s ease; }
-    .pagination button:disabled { background-color: #c9a9e4; cursor: not-allowed; }
-    .pagination button:hover:not(:disabled) { background-color: #6b2fb5; }
-    footer { background: #ffffff; padding: 20px 0; text-align: center; border-top: 1px solid #e1e4e8; font-size: 14px; color: #888; margin-top: auto; }
+    /* (Use the full CSS you shared in userorderhistory.html here...) */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      font-size: 16px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #039855;
+    }
+
+    body {
+      background: url('https://images.unsplash.com/photo-1581579185169-53e13c7e7b08') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar .logo {
+      font-weight: 600;
+      font-size: 22px;
+    }
+
+    .navbar .nav-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .navbar .nav-links a:hover {
+      color: #3498db;
+    }
+
+    .dashboard-container {
+      display: flex;
+      flex: 1;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #2c3e50;
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .sidebar a {
+      padding: 15px 30px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #34495e;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      background-color: rgba(255,255,255,0.9);
+    }
+
+    .main-content h1 {
+      margin-bottom: 30px;
+      text-align: left;
+      color: #8540cf; 
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 16px 20px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #2c3e50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f4f6f8;
+    }
+
+    tr:hover {
+      background-color: #ecf0f1;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+      }
+
+      .sidebar a {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+    footer {
+      background-color: #f8f8f8;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
+    .status, .payment {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.status.complete {
+  color: green;
+  border: 2px solid green;
+  background-color: #e8f5e9;
+}
+
+.status.in-progress {
+  color: #fbc02d;
+  background-color: #fff9c4;
+  border: 2px solid #fdd835;
+}
+
+.status.pending {
+  color: #b71c1c;
+  background-color: #ffebee;
+  border: 2px solid #ef5350;
+}
+
+.payment.paid {
+  color: white;
+  background-color: #4caf50;
+  border-radius: 12px;
+  padding: 5px 12px;
+}
   </style>
 </head>
 <body>
-<header>
-  <h1>🧺 Smart Laundry Management System</h1>
-  <nav>
-    <a href="pricing.html">Pricing</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact Us</a>
-  </nav>
-</header>
-<div class="dashboard-container">
-  <aside class="sidebar">
-    <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
-    <a href="users_list.html"><i class="fa-solid fa-users"></i> Users List</a>
-    <a href="orderdashboard.php" class="active"><i class="fas fa-history"></i> Order History</a>
-    <a href="status.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
-    <a href="status.html"><i class="fa-solid fa-list-check"></i> Reviews</a>
-    <a href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
-    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-  </aside>
-  <main class="main-content">
-    <div class="main-heading">
-      <h1><i class="fas fa-history"></i> Order History</h1>
+  <header>
+    <h1>🮺 Smart Laundry Management System</h1>
+    <nav>
+      <a href="#">Pricing</a>
+      <a href="#">Blog</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+  </header>
+  <div class="dashboard-container">
+    <div class="sidebar">
+      <a href="userdashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+      <a href="placeorder.html"><i class="fas fa-shopping-cart"></i> Place Order</a>
+      <a href="userorderhistory.php"><i class="fas fa-history"></i> Order History</a>
+      <a href="userreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
+      <a href="Usersettings.html"><i class="fas fa-cogs"></i> Settings</a>
+      <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
     </div>
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search by Order ID or Customer Name..." />
+
+    <div class="main-content">
+      <h1><i class="fas fa-history" style="margin-right: 10px;"></i>My Order History</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Payment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if (!empty($orders)): ?>
+            <?php foreach ($orders as $order): ?>
+              <tr>
+                <td>#<?= htmlspecialchars($order['order_id']) ?></td>
+                <td><?= htmlspecialchars("$firstName $lastName") ?></td>
+                <td><?= htmlspecialchars($order['order_date']) ?></td>
+                <td>
+                  <?php
+                    $status = strtolower($order['status'] ?? 'pending');
+                    $statusClass = 'pending';
+                    if ($status === 'completed') $statusClass = 'complete';
+                    elseif ($status === 'in progress') $statusClass = 'in-progress';
+                  ?>
+                  <span class="status <?= $statusClass ?>"><?= ucfirst($status) ?></span>
+                </td>
+                <td><?= htmlspecialchars($order['product_type']) ?></td>
+                <td>$<?= number_format($order['price'], 2) ?></td>
+                <td><span class="payment paid">Paid</span></td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr><td colspan="7">No orders found.</td></tr>
+          <?php endif; ?>
+        </tbody>
+      </table>
     </div>
-    <table id="orderTable">
-      <thead>
-        <tr>
-          <th data-key="order-id">Order ID <span class="sort-arrow">&#9660;</span></th>
-          <th data-key="order-date">Date <span class="sort-arrow">&#9660;</span></th>
-          <th data-key="customer-name">Customer Name <span class="sort-arrow">&#9660;</span></th>
-          <th data-key="product-type">Service <span class="sort-arrow">&#9660;</span></th>
-          <th data-key="price">Total Amount <span class="sort-arrow">&#9660;</span></th>
-          <th data-key="status">Status <span class="sort-arrow">&#9660;</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php if (!empty($orders)): ?>
-        <?php foreach ($orders as $order): ?>
-<tr 
-  data-order-id="<?= htmlspecialchars($order['order_id'] ?? 'N/A') ?>"
-  data-order-date="<?= htmlspecialchars($order['order_date'] ?? 'N/A') ?>"
-  data-customer-name="
-  data-product-type="<?= htmlspecialchars($order['product_type'] ?? 'N/A') ?>"
-  data-price="<?= htmlspecialchars($order['price'] ?? 0) ?>"
-  data-status="<?= htmlspecialchars($order['status'] ?? 'Pending') ?>"
->
-  <td data-label="Order ID">#<?= htmlspecialchars($order['order_id'] ?? 'N/A') ?></td>
-  <td data-label="Date"><?= htmlspecialchars($order['order_date'] ?? 'N/A') ?></td>
-  <td data-label="Customer Name"><?= htmlspecialchars($order['customer_name'] ?? 'N/A') ?></td>
-  <td data-label="Service"><?= htmlspecialchars($order['product_type'] ?? 'N/A') ?></td>
-  <td data-label="Total Amount">$<?= number_format($order['price'] ?? 0, 2) ?></td>
-  <td data-label="Status">
-    <span class="status <?= strtolower($order['status'] ?? 'pending') ?>">
-      <?= htmlspecialchars($order['status'] ?? 'Pending') ?>
-    </span>
-  </td>
-</tr>
-<?php endforeach; ?>
-
-        <?php else: ?>
-          <tr><td colspan="6" class="no-results">No orders found.</td></tr>
-        <?php endif; ?>
-      </tbody>
-    </table>
-    <div class="pagination">
-      <button id="prevPage" disabled>&laquo; Prev</button>
-      <button id="nextPage" disabled>Next &raquo;</button>
-    </div>
-  </main>
-</div>
-<footer>&copy; 2025 Smart Laundry Management System. All rights reserved.</footer>
-<script>
-(() => {
-  const rowsPerPage = 5;
-  let currentPage = 1;
-  const table = document.getElementById('orderTable');
-  const tbody = table.querySelector('tbody');
-  const allRows = Array.from(tbody.querySelectorAll('tr'));
-  let filteredRows = [...allRows];
-  const searchInput = document.getElementById('searchInput');
-  const prevBtn = document.getElementById('prevPage');
-  const nextBtn = document.getElementById('nextPage');
-  let sortKey = null;
-  let sortDirection = 'asc';
-
-  function renderPage() {
-    const start = (currentPage - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-    filteredRows.forEach(row => row.style.display = 'none');
-    filteredRows.slice(start, end).forEach(row => row.style.display = '');
-    prevBtn.disabled = currentPage === 1;
-    nextBtn.disabled = end >= filteredRows.length;
-  }
-
-  function filterTable() {
-    const query = searchInput.value.toLowerCase();
-    filteredRows = allRows.filter(row =>
-      row.innerText.toLowerCase().includes(query)
-    );
-    currentPage = 1;
-    renderPage();
-  }
-
-  function compareRows(a, b, key, direction) {
-    let valA = a.dataset[key];
-    let valB = b.dataset[key];
-    if (key === 'price') {
-      valA = parseFloat(valA); valB = parseFloat(valB);
-    } else if (key === 'orderDate') {
-      valA = new Date(valA); valB = new Date(valB);
-    } else {
-      valA = valA.toLowerCase(); valB = valB.toLowerCase();
-    }
-    if (valA > valB) return direction === 'asc' ? 1 : -1;
-    if (valA < valB) return direction === 'asc' ? -1 : 1;
-    return 0;
-  }
-
-  function sortBy(key) {
-    const attrKey = key.replace(/-/g, '');
-    sortDirection = (sortKey === key && sortDirection === 'asc') ? 'desc' : 'asc';
-    sortKey = key;
-    filteredRows.sort((a, b) => compareRows(a, b, attrKey, sortDirection));
-    currentPage = 1;
-    renderPage();
-    updateSortIcons();
-  }
-
-  function updateSortIcons() {
-    document.querySelectorAll('thead th').forEach(th => {
-      th.classList.remove('sort-asc', 'sort-desc');
-      if (th.dataset.key === sortKey) {
-        th.classList.add(sortDirection === 'asc' ? 'sort-asc' : 'sort-desc');
-      }
-    });
-  }
-
-  searchInput.addEventListener('input', filterTable);
-  prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(); } });
-  nextBtn.addEventListener('click', () => { if (currentPage * rowsPerPage < filteredRows.length) { currentPage++; renderPage(); } });
-  document.querySelectorAll('thead th').forEach(th => {
-    th.addEventListener('click', () => sortBy(th.dataset.key));
-  });
-
-  renderPage();
-})();
-</script>
+  </div>
+  <footer class="main-footer">
+    <p>&copy; 2025 Smart Laundry Management System. All rights reserved.</p>
+  </footer>
 </body>
 </html>

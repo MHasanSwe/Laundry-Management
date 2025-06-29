@@ -312,10 +312,15 @@ try {
     <aside class="sidebar">
       <a href="../front/adminDashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
       <a href="../backend/adminprofile.php"><i class="fas fa-user"></i> Profile</a>
+<<<<<<< HEAD
       <a href="userlist (1).html"><i class="fa-solid fa-users"></i> Users List</a>
       <a href="../backend/adminorderhistory.php"><i class="fas fa-history"></i> Order History</a>
+=======
+      <a href="../backend/userlist.php"><i class="fa-solid fa-users"></i> Users List</a>
+      <a href="../font/adminorderhistory.php"><i class="fas fa-history"></i> Order History</a>
+>>>>>>> 53ff9e8f93376d91e03296c262d074bf14c7f60b
       <a href="status.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
-      <a href="../front/adminreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
+      <a href="../backend/adminreviews.php"><i class="fa-solid fa-comments"></i> Reviews</a>
       <a href="settingsadmin.html"><i class="fas fa-cogs"></i> Settings</a>
       <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
 
