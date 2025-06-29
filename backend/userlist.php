@@ -269,6 +269,19 @@
       });
     }
 
+    document.getElementById('searchInput').addEventListener('input', function () {
+  const query = this.value.toLowerCase();
+  const userCards = document.querySelectorAll('.user-card');
+
+  userCards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = text.includes(query) ? 'block' : 'none';
+  });
+});
+
+
+
+
     fetchUsers();
   </script>
 </body>

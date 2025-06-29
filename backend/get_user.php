@@ -11,13 +11,24 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     ]);
 
-    // ✅ Select only users, not admins
+    // Join user + profile info for non-admins
     $stmt = $pdo->query("
-        SELECT first_name, last_name, email, phone_number, created_at 
-        FROM sign_up 
-        WHERE role = 'user' 
-        ORDER BY created_at DESC
-    ");
+    SELECT 
+        s.user_id,
+        s.first_name,
+        s.last_name,
+        s.email,
+        s.phone_number,
+        s.created_at,
+        p.date_of_birth,
+        p.address,
+        p.education,
+        p.occupation
+    FROM sign_up s
+    LEFT JOIN user_profile p ON s.user_id = p.user_id
+    WHERE s.role = 'user'
+    ORDER BY s.created_at DESC
+");
 
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($users);

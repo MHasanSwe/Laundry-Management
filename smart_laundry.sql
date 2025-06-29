@@ -15,6 +15,9 @@ CREATE TABLE sign_up (
 
 ALTER TABLE sign_up ADD COLUMN phone_number VARCHAR(20) AFTER email;
 
+ALTER TABLE sign_up ADD COLUMN status ENUM('active', 'inactive', 'deleted') DEFAULT 'active';
+
+
 CREATE TABLE user_profile (
     user_id INT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
