@@ -12,6 +12,9 @@ CREATE TABLE sign_up (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+
+ALTER TABLE sign_up ADD COLUMN phone_number VARCHAR(20) AFTER email;
+
 CREATE TABLE user_profile (
     user_id INT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
