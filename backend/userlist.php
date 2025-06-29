@@ -238,36 +238,41 @@
     }
 
     function renderUsers(users) {
-      const usersGrid = document.getElementById('usersGrid');
-      usersGrid.innerHTML = '';
+  const usersGrid = document.getElementById('usersGrid');
+  usersGrid.innerHTML = '';
 
-      if (users.length === 0) {
-        usersGrid.innerHTML = `<p style="font-size:18px; color:#8540cf; grid-column: 1 / -1; text-align:center;">No users found.</p>`;
-        return;
-      }
+  if (users.length === 0) {
+    usersGrid.innerHTML = `<p style="font-size:18px; color:#8540cf; grid-column: 1 / -1; text-align:center;">No users found.</p>`;
+    return;
+  }
 
-      users.forEach(user => {
-        const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
-        const email = user.email || 'N/A';
-        const phone = user.phone_number ?? 'Not Provided';
-        const joinedDate = new Date(user.created_at).toLocaleDateString(undefined, {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
-        });
+  users.forEach(user => {
+    const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
+    const email = user.email || 'N/A';
+    const phone = user.phone_number ?? 'Not Provided';
+    const occupation = user.occupation || 'N/A';
+    const address = user.address || 'N/A';
+    const joinedDate = new Date(user.created_at).toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
 
-        const card = document.createElement('div');
-        card.className = 'user-card';
-        card.innerHTML = `
-          <div class="user-name">${fullName}</div>
-          <div class="user-info"><i class="fa-solid fa-envelope"></i> ${email}</div>
-          <div class="user-info"><i class="fa-solid fa-phone"></i> ${phone}</div>
-          <div class="user-joined">Joined: ${joinedDate}</div>
-          <div class="status-badge status-active">Active</div>
-        `;
-        usersGrid.appendChild(card);
-      });
-    }
+    const card = document.createElement('div');
+    card.className = 'user-card';
+    card.innerHTML = `
+      <div class="user-name">${fullName}</div>
+      <div class="user-info"><i class="fa-solid fa-envelope"></i> ${email}</div>
+      <div class="user-info"><i class="fa-solid fa-phone"></i> ${phone}</div>
+      <div class="user-info"><i class="fa-solid fa-briefcase"></i> ${occupation}</div>
+      <div class="user-info"><i class="fa-solid fa-location-dot"></i> ${address}</div>
+      <div class="user-joined">Joined: ${joinedDate}</div>
+      <div class="status-badge status-active">Active</div>
+    `;
+    usersGrid.appendChild(card);
+  });
+}
+
 
     document.getElementById('searchInput').addEventListener('input', function () {
   const query = this.value.toLowerCase();
