@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+include("auth.php");
 
 $host = "localhost";
 $dbname = "smart_laundry";
@@ -344,14 +345,14 @@ try {
 
   <div class="dashboard-container">
     <aside class="sidebar">
-      <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-      <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
-      <a href="users_list.html"><i class="fa-solid fa-users"></i> Users List</a>
-      <a href="order_history.html" class="active"><i class="fas fa-history"></i> Order History</a>
+      <a href="../front/adminDashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a href="../backend/adminprofile.php"><i class="fas fa-user"></i> Profile</a>
+      <a href="../front/userlist (1).html"><i class="fa-solid fa-users"></i> Users List</a>
+      <a href="../backend/adminorderhistory.php"><i class="fas fa-history"></i> Order History</a>
       <a href="status.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
-      <a href="status.html"><i class="fa-solid fa-list-check"></i> Reviews</a>
-      <a href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
-      <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <a href="../front/adminreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
+      <a href="settingsadmin.html"><i class="fas fa-cogs"></i> Settings</a>
+      <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
     </aside>
 
     <main class="main-content">

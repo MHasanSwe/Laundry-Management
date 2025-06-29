@@ -1,6 +1,7 @@
 <?php
-session_start();
+
 include("connection.php");
+include("auth.php");
 
 if (!isset($_SESSION["user_id"])) {
     echo json_encode([]);

@@ -1,10 +1,62 @@
 
 <?php
+include("../backend/connection.php");
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../front/login.html");
     exit();
 }
+
+// new orders (last 24 hours)
+try {
+    $stmt = $conn->prepare("SELECT COUNT(*) AS newOrders FROM orders WHERE order_date >= NOW() - INTERVAL 1 DAY");
+    $stmt->execute();
+    $newOrders = $stmt->fetch(PDO::FETCH_ASSOC)['newOrders'];
+} catch (PDOException $e) {
+    echo "Error fetching new orders: " . $e->getMessage();
+}
+
+
+
+ //total pending orders
+try {
+    $stmt = $conn->prepare("SELECT COUNT(*) AS total_pending_orders FROM orders WHERE status = 'Pending'");
+    $stmt->execute();
+    $pendingOrders = $stmt->fetch(PDO::FETCH_ASSOC)['total_pending_orders'];
+} catch (PDOException $e) {
+    echo "Error fetching pending orders: " . $e->getMessage();
+}
+
+//total users
+try {
+    $stmt = $conn->prepare("SELECT COUNT(*) AS total_users FROM sign_up WHERE role = 'user'");
+    $stmt->execute();
+    $totalUsers = $stmt->fetch(PDO::FETCH_ASSOC)['total_users'];
+} catch (PDOException $e) {
+    echo "Error fetching user count: " . $e->getMessage();
+}
+
+//total completed orders
+try {
+    $stmt = $conn->prepare("SELECT COUNT(*) AS total_completed_orders FROM orders WHERE status = 'Completed'");
+    $stmt->execute();
+    $completedOrders = $stmt->fetch(PDO::FETCH_ASSOC)['total_completed_orders'];
+} catch (PDOException $e) {
+    echo "Error fetching completed orders: " . $e->getMessage();
+}
+
+//total reviews
+try {
+    $stmt = $conn->prepare("SELECT COUNT(*) AS total_reviews FROM reviews");
+    $stmt->execute();
+    $totalReviews = $stmt->fetch(PDO::FETCH_ASSOC)['total_reviews'];
+} catch (PDOException $e) {
+    echo "Error fetching reviews: " . $e->getMessage();
+}
+
+
+
+
 ?>
 
 
@@ -258,9 +310,9 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
   <div class="dashboard-container">
     <!-- =================== SIDEBAR =================== -->
     <aside class="sidebar">
-      <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a href="../front/adminDashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
       <a href="../backend/adminprofile.php"><i class="fas fa-user"></i> Profile</a>
-      <a href="place_order.html"><i class="fa-solid fa-users"></i> Users List</a>
+      <a href="userlist (1).html"><i class="fa-solid fa-users"></i> Users List</a>
       <a href="../backend/adminorderhistory.php"><i class="fas fa-history"></i> Order History</a>
       <a href="status.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
       <a href="../front/adminreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
@@ -277,27 +329,28 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
       <!-- Top statistics row -->
       <section class="stats">
         <div class="stat-card blue">
-          <h2 class="stat-number" id="newOrders">240</h2>
+         <h2 class="stat-number" id="newOrders"><?php echo $pendingOrders; ?></h2>
+
           <p class="stat-label">New Orders</p>
           <a href="adminorders.html" class="view-more">View more »</a>
         </div>
         <div class="stat-card green">
-          <h2 class="stat-number" id="inProgress">120</h2>
+          <h2 class="stat-number" id="inProgress"><?php echo $pendingOrders; ?></h2>
           <p class="stat-label">In Progress</p>
           <a href="adminprogress.html" class="view-more">View more »</a>
         </div>
         <div class="stat-card orange">
-          <h2 class="stat-number" id="completedOrders">560</h2>
+          <h2 class="stat-number" id="completedOrders"><?php echo $completedOrders; ?></h2>
           <p class="stat-label">Complete</p>
           <a href="admincompleted.html" class="view-more">View more »</a>
         </div>
         <div class="stat-card red">
-          <h2 class="stat-number" id="totalCustomers">1026</h2>
+          <h2 class="stat-number" id="totalCustomers"><?php echo $totalUsers; ?></h2>
           <p class="stat-label">Users</p>
           <a href="userlist (1).html" class="view-more">View more »</a>
         </div>
         <div class="stat-card orange">
-          <h2 class="stat-number" id="completedOrders">200</h2>
+          <h2 class="stat-number" id="completedOrders"><?php echo $totalReviews; ?></h2>
           <p class="stat-label">Reviews</p>
           <a href="adminreviews.html" class="view-more">View more »</a>
         </div>

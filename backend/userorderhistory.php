@@ -1,6 +1,7 @@
 
 <?php
-session_start();
+
+include("auth.php");
 
 $host = "localhost";
 $dbname = "smart_laundry";

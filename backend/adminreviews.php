@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+include("auth.php");
+include("auth.php");
 
 // Optional: Restrict access to admins only
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -237,7 +239,7 @@ input[type="month"]:focus {
       <a href="paymenthistory.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
       <a href="adminreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
       <a href="settingsadmin.html"><i class="fas fa-cogs"></i> Settings</a>
-      <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
     </div>
 
     <div class="main-content">

@@ -1,5 +1,5 @@
 <?php
-session_start();
+include("auth.php");
 
 // Database connection
 $host = "localhost";
@@ -327,7 +327,7 @@ footer {
       .then(response => {
         alert("Payment Successful! Your order has been placed.");
         localStorage.clear();
-        window.location.href = 'confirmation.html'; // Or dashboard
+        window.location.href = '../front/userdashboard.html'; // Or dashboard
       })
       .catch(err => {
         console.error(err);

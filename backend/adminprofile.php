@@ -1,8 +1,9 @@
 <?php
-session_start();
 
 
-include("../backend/connection.php");
+
+include("connection.php");
+include("auth.php");
 
 // Debug: check if session is working
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -68,13 +69,13 @@ $admin = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="dashboard-container">
         <div class="sidebar">
             <a href="../front/adminDashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-            <a href="adminprofile.html"><i class="fas fa-user"></i> Profile</a>
-            <a href="userlist (1).html"><i class="fa-solid fa-users"></i> Users List</a>
-            <a href="orderhistory.html"><i class="fas fa-history"></i> Order History</a>
+            <a href="../backend/adminprofile.php"><i class="fas fa-user"></i> Profile</a>
+            <a href="../front/userlist (1).html "><i class="fa-solid fa-users"></i> Users List</a>
+            <a href="../backend/adminorderhistory.php"><i class="fas fa-history"></i> Order History</a>
             <a href="paymenthistory.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
             <a href="adminreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
             <a href="settingsadmin.html"><i class="fas fa-cogs"></i> Settings</a>
-            <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
         </div>
 
         <div class="profile-container">

@@ -1,6 +1,7 @@
 <?php
-session_start();
+
 require 'connection.php';
+include("auth.php");
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../front/login.html"); // adjust path if needed
@@ -26,7 +27,6 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
  <title>User Profile | Laundry Management System</title>
- https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
  <link rel="stylesheet" href="../front/styles/profile.css"/>
 </head>
 <body>
@@ -44,7 +44,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
  <a href="../front/userorderhistory.html"><i class="fas fa-history"></i> Order History</a>
  <a href="../backend/userreviews.php"><i class="fa-solid fa-comments"></i> Reviews</a>
  <a href="../front/Usersettings.html"><i class="fas fa-cogs"></i> Settings</a>
- <a href="../front/logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+ <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
  </div>
 
  <div class="profile-container">

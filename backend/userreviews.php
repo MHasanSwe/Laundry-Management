@@ -1,5 +1,6 @@
 <?php
-session_start();
+include("auth.php");
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.html');
     exit();
@@ -302,7 +303,7 @@ footer {
       <a href="userorderhistory.html"><i class="fas fa-history"></i> Order History</a>
       <a href="userreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
       <a href="Usersettings.html"><i class="fas fa-cogs"></i> Settings</a>
-      <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
     </div>
 
     <div class="main-content">

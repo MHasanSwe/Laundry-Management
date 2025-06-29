@@ -1,6 +1,7 @@
 <?php
-session_start();
+
 require 'connection.php';
+include("auth.php");
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../front/login.html");

@@ -1,6 +1,6 @@
 <?php
-session_start();
 
+include("auth.php");
 // Database connection
 $host = "localhost";
 $dbname = "smart_laundry";
@@ -259,7 +259,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <a href="userorderhistory.html"><i class="fas fa-history"></i> Order History</a>
     <a href="userreviews.html"><i class="fa-solid fa-comments"></i> Reviews</a>
     <a href="Usersettings.html"><i class="fas fa-cogs"></i> Settings</a>
-    <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
   </div>
 
   <div class="main-content">

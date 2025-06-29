@@ -1,5 +1,6 @@
 <?php
 include("connection.php");
+include("auth.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = $_POST["id"];

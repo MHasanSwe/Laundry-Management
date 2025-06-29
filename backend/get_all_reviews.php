@@ -1,6 +1,7 @@
 <?php
-session_start();
+
 include("connection.php");
+include("auth.php");
 
 if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "admin") {
     echo json_encode(["error" => "unauthorized"]);
