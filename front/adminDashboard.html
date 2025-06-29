@@ -325,47 +325,84 @@
 
   <!-- =================== CHART.JS CONFIG =================== -->
   <script>
-  // Labels for the X axis (Months)
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-  // Dummy data for each chart
   const ordersData = [30, 45, 60, 70, 55, 40, 65, 80, 90, 100, 95, 85];
   const incomeData = [5000, 7000, 8000, 9000, 7500, 6000, 8500, 10000, 11000, 12000, 11500, 10500];
   const expenditureData = [2000, 2500, 3000, 3200, 2800, 2400, 3100, 4000, 4200, 4500, 4300, 3900];
-  const profitData = incomeData.map((income, index) => income - expenditureData[index]);
+  const profitData = incomeData.map((income, i) => income - expenditureData[i]);
 
-  // Helper to create a chart
-  function createLineChart(ctxId, label, data, borderColor) {
-    new Chart(document.getElementById(ctxId), {
+  function createLineChart(ctxId, label, data, borderColor, bgColor) {
+    const ctx = document.getElementById(ctxId).getContext('2d');
+    new Chart(ctx, {
       type: 'line',
       data: {
         labels: months,
         datasets: [{
           label: label,
           data: data,
+          fill: true,
           borderColor: borderColor,
-          backgroundColor: 'rgba(0, 0, 0, 0)',
-          tension: 0.3
+          backgroundColor: bgColor,
+          tension: 0.4,
+          pointBackgroundColor: borderColor,
+          pointBorderColor: '#fff',
+          pointHoverRadius: 6,
+          pointRadius: 4,
+          pointStyle: 'circle',
         }]
       },
       options: {
         responsive: true,
         plugins: {
           legend: {
-            display: true
+            display: true,
+            labels: {
+              color: '#333',
+              font: {
+                size: 14,
+                weight: 'bold'
+              }
+            }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+            backgroundColor: '#333',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            borderColor: borderColor,
+            borderWidth: 1
           }
         },
         scales: {
           x: {
             title: {
               display: true,
-              text: 'Month'
+              text: 'Month',
+              color: '#666',
+              font: { weight: 'bold' }
+            },
+            ticks: {
+              color: '#555'
+            },
+            grid: {
+              display: false
             }
           },
           y: {
             title: {
               display: true,
-              text: label
+              text: label,
+              color: '#666',
+              font: { weight: 'bold' }
+            },
+            ticks: {
+              color: '#555'
+            },
+            grid: {
+              color: '#eee'
             }
           }
         }
@@ -373,11 +410,11 @@
     });
   }
 
-  // Create each chart
-  createLineChart('ordersThisMonthChart', 'Orders', ordersData, '#36A2EB');
-  createLineChart('incomeThisYearChart', 'Income', incomeData, '#4CAF50');
-  createLineChart('expenditureThisMonthChart', 'Expenditure', expenditureData, '#F44336');
-  createLineChart('profitThisYearChart', 'Profit', profitData, '#FF9800');
+  // Call charts with prettier colors
+  createLineChart('ordersThisMonthChart', 'Orders', ordersData, '#3e95cd', 'rgba(62, 149, 205, 0.2)');
+  createLineChart('incomeThisYearChart', 'Income', incomeData, '#4caf50', 'rgba(76, 175, 80, 0.2)');
+  createLineChart('expenditureThisMonthChart', 'Expenditure', expenditureData, '#f44336', 'rgba(244, 67, 54, 0.2)');
+  createLineChart('profitThisYearChart', 'Profit', profitData, '#ff9800', 'rgba(255, 152, 0, 0.2)');
 </script>
 </body>
 </html>
