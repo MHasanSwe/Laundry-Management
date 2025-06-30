@@ -193,8 +193,8 @@
 
     <!-- Sidebar -->
     <aside class="sidebar">
-      <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-      <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+      <a href="../front/adminDashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a href="adminprofile.php"><i class="fas fa-user"></i> Profile</a>
       <a href="userlist.html" class="active"><i class="fa-solid fa-users"></i> Users List</a>
       <a href="order_history.html"><i class="fas fa-history"></i> Order History</a>
       <a href="status.html"><i class="fa-solid fa-cash-register"></i> Payment History</a>
